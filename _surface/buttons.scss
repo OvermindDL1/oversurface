@@ -1,0 +1,135 @@
+@import './_imports/_variables';
+
+[class^='btn'] {
+  background-image: none;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: 0;
+  border: 0;
+  box-shadow: $box-shadow-float;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Roboto;
+  margin-bottom: $space-small;
+  padding: $space-small $space-med;
+  position: relative;
+  text-transform: uppercase;
+  transition: background-color $animate-style, box-shadow $animate-style;
+  //transition: all $animate-style;
+  will-change: background-size, background-image;
+
+  &::after {
+    background: radial-gradient(circle, #fff 95%, rgba(0, 0, 0, 0) 95%);
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: .7%;
+    content: '';
+    position: absolute;
+    transition: none;
+	}
+
+  &:focus:not(a) {
+    background-size: 1000%;
+    outline: none;
+    //transition: all 1s $cubic;
+	}
+}
+
+@mixin btn-gradient($c) {
+  background-color: $c;
+  background-image: radial-gradient(circle, $c 1%, lighten($c, 15%) 15%, rgba(0, 0, 0, 0) 30%);
+}
+
+.btn--float {
+  @include btn-gradient($accent);
+  border-radius: 50%;
+  font-size: $font-big;
+  height: 50px;
+  padding: 0;
+  width: 50px;
+  will-change: box-shadow, background-color;
+
+  &:hover {
+    background-color: lighten($accent, 5%);
+    box-shadow: $box-shadow-float-hover;
+	}
+}
+
+.btn--raised {
+  @include btn-gradient($river);
+  border-radius: $border-radius-small * .66;
+  box-shadow: $box-shadow-raised;
+  color: #fff;
+  stroke: #fff;
+  will-change: box-shadow, background-color;
+
+  &:hover {
+    background-color: lighten($river, 5%);
+    box-shadow: $box-shadow-raised-hover;
+	}
+}
+
+.btn--flat {
+  @include btn-gradient($secondary);
+  background-color: $body-background;
+  box-shadow: none;
+}
+
+.btn--primary {
+  @include btn-gradient($primary);
+  color: $primary-inverted;
+  stroke: $primary-inverted;
+
+  &:hover {
+    background-color: lighten($primary, 5%);
+	}
+}
+
+.btn--secondary {
+  @include btn-gradient($secondary);
+
+  &:hover {
+    background-color: lighten($secondary, 5%);
+	}
+}
+
+.btn--accent {
+  @include btn-gradient($accent);
+
+  &:hover {
+    background-color: lighten($accent, 5%);
+	}
+}
+
+.btn--red {
+  @include btn-gradient($alizarin);
+
+  &:hover {
+    background-color: lighten($alizarin, 5%);
+	}
+}
+
+.btn--yellow {
+  @include btn-gradient($sunflower);
+
+  &:hover {
+    background-color: lighten($sunflower, 5%);
+	}
+}
+
+.btn--green {
+  @include btn-gradient($green);
+
+  &:hover {
+    background-color: lighten($green, 5%);
+	}
+}
+
+.btn--blue {
+  @include btn-gradient($blue);
+
+  &:hover {
+    background-color: lighten($blue, 5%);
+	}
+}

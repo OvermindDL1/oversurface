@@ -1,0 +1,117 @@
+@import './_imports/_variables', './_imports/_colors';
+
+/*
+  Use this by adding this to your html location, replacing `icon--` with a specific type, like `icon--menu`
+
+  <whatever-parent-element class="icon--">
+    <svg
+      viewbox="0 0 1 1"
+      class="icon--"
+      >
+      <g>
+        <line x1="0" y1="0" x2="1" y2="0"></line>
+        <line x1="0" y1="0" x2="1" y2="0"></line>
+        <line x1="0" y1="0" x2="1" y2="0"></line>
+      </g>
+    </svg>
+  </whatever-parent-element>
+*/
+
+$stroke-width: .1px !default;
+$stroke-width-half: $stroke-width * .5;
+$stroke-width-angle: sqrt(($stroke-width / 1px * $stroke-width / 1px) * ($stroke-width / 1px * $stroke-width / 1px)) * 1px;
+$stroke-width-double-angle: sqrt(($stroke-width / 1px * $stroke-width / 1px) * (2 * $stroke-width / 1px * $stroke-width / 1px)) * 1px;
+
+
+// Internet Explorer is horrible, lacks basic SVG functionality...
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  [class*='icon--'] {
+    //div:nth-child(1) {
+    &::before {
+      background-color: $dark-bg;
+      border: solid 2px;
+      border-color: $dark-highlight;
+      color: $dark-text;
+      content: 'Unsupported browser, upgrade to any evergreen status browser, including but not limited to Chrome, Firefox, or Edge.';
+      display: flex;
+      height: 40px;
+      left: 0;
+      line-height: 100%;
+      padding: 8px;
+      position: fixed;
+      right: 0;
+      text-align: center;
+      top: 0;
+      vertical-align: middle;
+    }
+  }
+}
+
+
+[class*='icon--'] {
+  > svg {
+    height: 100%;
+    //stroke: $dark-text;
+    stroke: inherit;
+    width: 100%;
+
+    > g > line {
+      transition: transform $cubic;
+    }
+  }
+
+  &.icon--menu > svg > g > line {
+    stroke-width: $stroke-width;
+
+    &:nth-child(1) {
+      //transform: translate(.125px, .25px - $stroke-width-half) scale(.75, 1);
+      transform: translate(.5px, .25px) scaleX(.75);
+    }
+
+    &:nth-child(2) {
+      //transform: translate(.125px, .5px - $stroke-width-half) scale(.75, 1);
+      transform: translate(.5px, .5px) scaleX(.75);
+    }
+
+    &:nth-child(3) {
+      //transform: translate(.125px, .75px - $stroke-width-half) scale(.75, 1);
+      transform: translate(.5px, .75px) scaleX(.75);
+    }
+  }
+
+  &.icon--back > svg > g > line {
+    stroke-width: $stroke-width;
+
+    &:nth-child(1) {
+      //transform: translate(.125px - $stroke-width-half, .5px - $stroke-width-half * .666666) scale(.5, .5) rotate(-.125turn);
+      transform: translate(.3px, .33333px) rotate(-.125turn) scaleX(.56666);
+    }
+
+    &:nth-child(2) {
+      //transform: translate(.125px, .5px - $stroke-width-half) scale(.75, .75);
+      transform: translate(.5px, .5px) scaleX(.75);
+    }
+
+    &:nth-child(3) {
+      //transform: translate(.125px - $stroke-width-half, .5px - $stroke-width-half * 1.33333) scale(.5, .5) rotate(.125turn);
+      transform: translate(.3px, .66666px) rotate(.125turn) scaleX(.56666);
+    }
+  }
+
+  // Like a pencil
+  &.icon--edit > svg > g > line {
+    stroke-width: $stroke-width;
+
+    &:nth-child(1) {
+      transform: translate(.4px, .6px) rotate(-.125turn) scaleX(.75);
+    }
+
+    &:nth-child(2) {
+      transform: translate(.5px, .5px) rotate(-.125turn) scale(.725, 2);
+    }
+
+    &:nth-child(3) {
+      transform: translate(.9px, .1px) rotate(-.125turn) scale(.2, 2);
+    }
+  }
+}

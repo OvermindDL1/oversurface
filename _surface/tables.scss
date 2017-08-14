@@ -1,0 +1,141 @@
+@import './_imports/_variables', './_imports/_colors';
+
+
+.table--header {
+  color: lighten($black, 15%);
+  font-size: $font-med;
+  //line-height: $space-big * 1.3;
+  line-height: 125%;
+}
+
+tr {
+  border-bottom: solid 1px lighten($grey, 30%);
+  font-size: $font-med + 1px;
+  line-height: $space-big * 1.3;
+  // page-break-inside: avoid;
+  will-change: background;
+
+  &.packed {
+    line-height: 110%;
+
+    >td>[class^='btn'],
+    >th>[class^='btn'] {
+      margin-bottom: 0;
+    }
+  }
+}
+
+table {
+  width: 100%;
+
+  &.striped {
+    >tr,
+    >thead>tr,
+    >tbody>tr {
+      &:not(.table--header) {
+        &:nth-child(odd) {
+          background: rgba(0, 0, 0, .015);
+        }
+
+        &:hover {
+          //background: lighten($grey, 30%);
+          background: rgba(0, 0, 0, .05);
+        }
+      }
+    }
+  }
+}
+
+td,
+th {
+  page-break-inside: avoid;
+
+  &:first-child {
+    padding-left: $space-big;
+    @media screen and (max-width: $media-med) {
+      padding-left: $space-big * .8;
+    }
+    @media screen and (max-width: $media-small) {
+      padding-left: $space-med;
+    }
+  }
+
+  &:last-child {
+    padding-right: $space-big;
+    @media screen and (max-width: $media-med) {
+      padding-right: $space-big * .8;
+    }
+    @media screen and (max-width: $media-small) {
+      padding-right: $space-med;
+    }
+  }
+
+  text-align: left; // By default
+
+  &.pad-left {
+    padding-left: $space-med;
+  }
+
+  &.pad-right {
+    padding-right: $space-med;
+  }
+
+  &.pad {
+    padding-left: $space-small;
+    padding-right: $space-small;
+  }
+
+  &.align-left {
+    text-align: left;
+  }
+
+  &.align-right {
+    text-align: right;
+  }
+
+  &.align-center {
+    text-align: center;
+  }
+
+}
+
+@media print {
+  table {
+    &.striped {
+      >tr,
+      >thead>tr,
+      >tbody>tr {
+        &:not(.table--header) {
+          &:nth-child(odd) {
+            box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .1) !important; // This is basically 'background-color' for printing...
+            // Maybe this for webkit browsers?  This might need to go in `body {}` though...
+            // -webkit-print-color-adjust: exact;
+          }
+        }
+      }
+    }
+  }
+
+  tr {
+    line-height: 110%;
+  }
+
+  td,
+  th,
+  td:first-child,
+  th:first-child,
+  td:last-child,
+  th:last-child {
+    border: solid black;
+    border-width: 1px;
+    padding: 2px;
+
+    &.pad-left {
+      padding-left: 2px;
+    }
+
+    &.pad-right {
+      padding-right: 2px;
+    }
+  }
+}

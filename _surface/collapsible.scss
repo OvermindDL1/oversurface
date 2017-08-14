@@ -1,0 +1,68 @@
+@import './_imports/_variables';
+
+[id*='collapsible-'] {
+  display: none;
+
+  &:checked {
+    ~ [class*='collapsible-'][class$='area'] { // Collapsible content
+      height: auto;
+      padding: $space-small * 1.5 $space-med;
+      transform: scaleY(1);
+      //margin-bottom: $space-med;
+    }
+
+    + label {
+      &::before {
+        margin-top: 6px;
+        transform: rotate(-45deg) translateX(1px);
+      }
+
+      &::after {
+        margin-top: 5px;
+        transform: rotate(45deg) translate(4px, -3px);
+      }
+    }
+  }
+}
+
+label[for*='collapsible-'] { // Label
+  border-bottom: solid 1px lighten($grey, 30%);
+  border-radius: 3px;
+  color: lighten($black, 15%);
+  cursor: pointer;
+  display: flex;
+  padding: $space-small * 1.5 24px;
+  position: relative;
+  width: 100%;
+
+  &::before,
+  &::after {
+    background: $grey;
+    content: '';
+    height: 8px;
+    position: absolute;
+    right: $space-med;
+    transition: all .3s ease;
+    width: 2px;
+  }
+
+  &::before {
+    margin-top: 2px;
+    transform: rotate(50deg);
+  }
+
+  &::after {
+    margin-top: 6px;
+    transform: rotate(-50deg);
+
+  }
+}
+
+[class*='collapsible-'][class$='area'] { // Collapsible content
+  height: 0;
+  padding-left: $space-med;
+  transform: scaleY(0);
+  transform-origin: 0 0;
+  transition: all .3s ease;
+  will-change: height, transform;
+}

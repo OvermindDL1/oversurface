@@ -1,0 +1,106 @@
+@import './_imports/_variables';
+
+// <div class="alert">
+//   <input type="checkbox" id="error-message">
+//   <label for="error-message">Dismiss</label>
+//   <p><%= @error %></p>
+// </div>
+
+.alert {
+  background-color: $light-bg;
+  border-width: 0;
+  color: $light-text;
+  // margin: 0;
+  padding: 0;
+  position: relative;
+
+  > input {
+    display: none;
+
+    + label {
+      background-color: $dark-bg;
+      border: solid 2px $light-highlight;
+      border-radius: 6px;
+      bottom: 0;
+      color: $dark-text;
+      cursor: pointer;
+      height: 28px;
+      left: 0;
+      padding: 3px;
+      position: absolute;
+      width: 100%;
+
+      ~ * {
+        border: solid 2px $light-highlight;
+        border-radius: 6px;
+        height: 100%;
+        padding: 4px;
+        padding-bottom: 30px;
+      }
+    }
+
+    &:checked {
+      ~ * {
+        display: none;
+      }
+    }
+  }
+
+  &.alert-error {
+    > input ~ * {
+      background-color: lightpink;
+      border-color: red;
+    }
+
+    > input + label {
+      background-color: darkred;
+    }
+  }
+
+  &.alert-warn,
+  &.alert-warning {
+    > input ~ * {
+      background-color: cornsilk;
+      border-color: yellow;
+    }
+
+    > input + label {
+      background-color: darkgoldenrod;
+    }
+  }
+
+  &.alert-info,
+  &.alert-information {
+    > input ~ * {
+      background-color: rgb(208, 208, 224);
+      border-color: rgb(64, 64, 196);
+    }
+
+    > input + label {
+      background-color: rgb(0, 0, 96);
+    }
+  }
+}
+
+//.alert-wrap {
+//  position: relative;
+//}
+//
+//.alert {
+//  padding-bottom: 50px;
+//}
+//
+//#alert-check {
+//	display: none;
+//	&:checked {
+//		~ div, ~ label {
+//			display: none;
+//		}
+//	}
+//	+ label {
+//		position: absolute;
+//		right: 16px;
+//		bottom: 10px;
+//		cursor: pointer;
+//	}
+//}

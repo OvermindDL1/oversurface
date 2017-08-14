@@ -1,0 +1,18 @@
+@import './_imports/_variables', './_imports/_colors';
+
+.content-has-footer {
+  padding-bottom: $footer-inner-height + ($space-small * 3);
+}
+
+footer {
+  background: $dark-bg;
+  bottom: 0;
+  color: $dark-text;
+  display: block;
+  height: $footer-inner-height;
+  left: 0;
+  padding-bottom: $space-med;
+  padding-top: $space-med;
+  position: absolute;
+  right: 0;
+}

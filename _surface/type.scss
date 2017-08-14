@@ -1,0 +1,90 @@
+@import './_imports/_variables';
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,300,500,700|Gentium+Book+Basic:400,700');
+
+div,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+input,
+label,
+header,
+aside,
+menu,
+body {
+  color: $light-text;
+  font-family: $sans;
+}
+
+body {
+  stroke: $light-text;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 130%;
+  margin-bottom: 1em * .8;
+
+  &[id] {
+    > a.anchor {
+      background: inherit;
+      color: $transparent-white;
+      display: inline;
+      font-size: 100%;
+      padding: 0 $space-small;
+      text-decoration: none;
+      transition: color $animate-style;
+    }
+
+    &:hover > a.anchor {
+      color: inherit;
+    }
+  }
+}
+
+p {
+  margin-bottom: $space-med;
+}
+
+h1 {
+  font-size: $font-huge;
+}
+
+h2 {
+  font-size: $font-huge * .85;
+}
+
+h3 {
+  font-size: $font-huge * .7;
+}
+
+h4 {
+  font-size: $font-huge * .62;
+}
+
+h5 {
+  font-size: $font-huge * .52;
+}
+
+h6 {
+  font-size: $font-huge * .45;
+}
+
+p,
+a {
+  font-size: $font-med;
+}
+
+.subtitle {
+  color: darken($grey, 5%);
+  font-style: italic;
+}

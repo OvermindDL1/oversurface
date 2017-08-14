@@ -1,0 +1,13 @@
+@import './_imports/_variables', './_imports/_colors';
+
+.card {
+  border-radius: $border-radius-small;
+  box-shadow: $box-shadow-card;
+  margin: $space-small;
+}
+
+.tile,
+.card {
+  background: $light-card;
+  padding: $space-med;
+}

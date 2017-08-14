@@ -1,0 +1,64 @@
+@import './_imports/_variables';
+
+a {
+  &:not([class^='btn']),
+  &.btn--link {
+    background: linear-gradient(to top, rgba($secondary, .8) 50%, rgba(255, 255, 255, 0) 50%);
+    background-position: 0 10%;
+    background-repeat: no-repeat;
+    background-size: 100% 200%;
+    box-sizing: border-box;
+    color: inherit;
+    stroke: $secondary;
+    text-decoration: none;
+    transition: background-position $animate-style, color $animate-style;
+    will-change: background-position, color;
+
+    svg {
+      transition: stroke $animate-style;
+    }
+
+    &:active {
+      background-position: 0 100%;
+      color: $secondary-inverted;
+      stroke: $secondary-inverted;
+      text-decoration: none;
+  	}
+
+    &:focus {
+      background-position: 0 100%;
+      color: $secondary-inverted;
+      stroke: $secondary-inverted;
+      text-decoration: none;
+  	}
+
+    &:hover {
+      background-position: 0 100%;
+      color: $secondary-inverted;
+      stroke: $secondary-inverted;
+      text-decoration: none;
+  	}
+  }
+
+  &[class^='btn'] {
+    text-decoration: none;
+  }
+
+  @media print {
+    &.print--simple {
+      background: rgba(255, 255, 255, 0);
+      color: inherit;
+      stroke: inherit;
+      text-decoration: none;
+
+      &:active,
+      &:focus,
+      &:hover {
+        background: rgba(255, 255, 255, 0);
+        color: inherit;
+        stroke: inherit;
+        text-decoration: none;
+      }
+    }
+  }
+}

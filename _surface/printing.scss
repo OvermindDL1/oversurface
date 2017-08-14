@@ -1,0 +1,92 @@
+@media print {
+  // Firefox printing bug fix...  Printing in firefox is broken for a long time now, works elsewhere...
+  body {
+    background-color: white;
+    display: block !important; // Durn firefox...
+    overflow-y: auto;
+  }
+
+  .print--hidden {
+    display: none !important;
+  }
+
+  // Margins
+
+  .print--no-margin {
+    margin: 0 !important;
+  }
+
+  .print--no-margin-left {
+    margin-left: 0 !important;
+  }
+
+  .print--no-margin-right {
+    margin-left: 0 !important;
+  }
+
+  .print--no-margin-up {
+    margin-left: 0 !important;
+  }
+
+  .print--no-margin-down {
+    margin-left: 0 !important;
+  }
+
+  // Paddings
+
+  .print--no-padding {
+    padding: 0 !important;
+  }
+
+  .print--no-padding-left {
+    padding-left: 0 !important;
+  }
+
+  .print--no-padding-right {
+    padding-left: 0 !important;
+  }
+
+  .print--no-padding-up {
+    padding-left: 0 !important;
+  }
+
+  .print--no-padding-down {
+    padding-left: 0 !important;
+  }
+
+  a[href] {
+    &.print--show-url::after {
+      content: ' (' attr(href) ')';
+    }
+    // WTF bootstrap/foundation/others...
+    &:not(.print--show-url)::after {
+      content: none !important;
+    }
+  }
+
+  .print--color-exact {
+    -webkit-print-color-adjust: exact;
+  }
+
+  .print--bg-shade-15 {
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .15) !important;
+  }
+
+  .print--bg-shade-85 {
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, .85);
+  }
+
+  ///////////////////////////////////////
+  // Clean other sections up for printing
+  ///////////////////////////////////////
+
+  // Grid
+
+  .m--0,
+  .m-m--0,
+  .m-s--0,
+  .m-t--0 {
+    margin-left: 0;
+  }
+
+}

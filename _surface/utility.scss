@@ -1,0 +1,85 @@
+
+
+body {
+  min-height: 100vh;
+  min-width: 100%;
+  position: relative;
+}
+
+// Floats
+.right {
+  float: right;
+}
+
+.left {
+  float: left;
+}
+
+.clear {
+  clear: both;
+}
+
+// Display
+.inline {
+  display: inline;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.block {
+  display: block;
+}
+
+.fixed {
+  display: fixed;
+}
+
+
+// Margin and Padding
+.no-pad {
+  padding: 0;
+}
+
+.no-margin-horizontal {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.no-margin-vertical {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+// Center
+.center {
+  margin: 0 auto;
+}
+
+.text-center {
+  text-align: center;
+}
+
+// Text attributes
+.nowrap {
+  white-space: nowrap;
+}
+
+.noselect {
+  user-select: none;
+}
+
+.scroll-horizontal-auto {
+  overflow-x: auto;
+}
+
+@media print {
+  .scroll-horizontal-auto {
+    overflow-x: inherit;
+  }
+}

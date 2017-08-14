@@ -1,0 +1,477 @@
+@import './_imports/_variables';
+
+label {
+  color: lighten($black, 5%);
+}
+
+
+input:not([type='checkbox']) {
+  background: linear-gradient(to bottom, $transparent-white 96%, $primary 96%);
+  background-position: 50% 0;
+  background-repeat: no-repeat;
+  background-size: 0 100%;
+  border: 0;
+  border-bottom: solid 1px $primary;
+  min-height: 26px;
+  transition: background-size $animate-style, box-shadow $animate-style, background-color $animate-style;
+  will-change: background-size;
+
+  &:valid {
+    background-size: 0% 100%;
+  }
+
+  &:focus {
+    background-size: 100% 100%;
+  }
+}
+
+.label-group {
+  display: block;
+  margin: $space-med 4px;
+  outline: none;
+  padding: 4px;
+  position: relative;
+  user-select: none;
+
+  label {
+    padding-left: 2px;
+    position: absolute;
+    user-select: none;
+    width: 100%;
+  }
+}
+
+.floating-label-group {
+  margin: $space-med 4px;
+  outline: none;
+  padding: 0;
+  position: relative;
+
+  label {
+    color: $secondary;
+    cursor: text;
+    left: 0;
+    padding-left: 2px;
+    position: absolute;
+    top: 2px;
+    transition: top $animate-style, font-size $animate-style, color $animate-style;
+    user-select: none;
+    width: 100%;
+
+    &::after {
+      transition: content $animate-style;
+    }
+  }
+
+  input,
+  .grouping {
+    background: linear-gradient(to bottom, $transparent-white 96%, $primary 96%);
+    background-color: $primary-inverted;
+    padding: 0;
+    width: 100%;
+
+    &.grouping {
+      display: flex;
+
+      > * {
+        flex: 1;
+      }
+    }
+
+    &:focus + label,
+    &:valid + label,
+    &[type='date'] + label,
+    &[type='time'] + label,
+    &[type='datetime-local'] + label,
+    &[type='month'] + label,
+    &.grouping + label {
+      color: $primary;
+      font-size: 11px;
+      height: $space-small;
+      line-height: $space-small;
+      top: -$space-small;
+      width: 100%;
+    }
+
+    &:invalid + label {
+      background-color: $accent;
+      color: $accent-text;
+
+      &::after {
+        content: ' (invalid)';
+      }
+    }
+
+    &[required]:invalid + label::after {
+      content: ' (required)';
+    }
+  }
+}
+
+.lower-label-group {
+  margin: $space-med 4px;
+  outline: none;
+  padding: 0;
+  position: relative;
+
+  label {
+    bottom: 0;
+    color: $secondary;
+    cursor: text;
+    left: 0;
+    padding-left: 2px;
+    position: absolute;
+    transition: bottom $animate-style, font-size $animate-style, color $animate-style, background-color $animate-style;
+    user-select: none;
+    width: 100%;
+
+    &::after {
+      transition: content $animate-style;
+    }
+  }
+
+  input,
+  .grouping {
+    background: linear-gradient(to bottom, $transparent-white 96%, $primary 96%);
+    background-color: $primary-inverted;
+    padding: 0;
+    width: 100%;
+
+    &.grouping {
+      display: flex;
+
+      > * {
+        flex: 1;
+      }
+
+      > .lower-label-group,
+      > .floating-label-group {
+        margin: 12px 4px;
+      }
+    }
+
+    &:focus + label,
+    &:valid + label,
+    &[type='date'] + label,
+    &[type='time'] + label,
+    &[type='datetime-local'] + label,
+    &[type='month'] + label,
+    &.grouping + label {
+      background-color: $primary;
+      border: solid 1px $primary;
+      bottom: -$space-small;
+      color: $primary-inverted;
+      font-size: 11px;
+      height: $space-small;
+      line-height: $space-small - 1;
+    }
+
+    &:invalid + label {
+      background-color: $accent;
+      color: $accent-text;
+
+      &::after {
+        content: ' (invalid)';
+      }
+    }
+
+    &[required]:invalid + label::after {
+      content: ' (required)';
+    }
+
+    &:valid {
+      // border-top: 1px solid $primary;
+      // background-color: lighten($primary, 65%);
+      background-color: transparentize($primary, .96);
+    }
+  }
+}
+
+
+// Date/Time/Etc Picker
+input[type='date'],
+input[type='time'],
+input[type='datetime-local'],
+input[type='month'] {
+}
+
+
+// Only works in Chome, but convenient if it did work..
+//input {
+//  &[type='email'],
+//  &[type='text'],
+//  &[type='password'] {
+//    background: linear-gradient(to bottom, $transparent-white 96%, $primary 96%);
+//    background-position: -200px 0;
+//    background-repeat: no-repeat;
+//    background-size: 200px 100%;
+//    border: 0;
+//    border-bottom: solid 1px $primary;
+//    color: darken($primary, 20%);
+//    display: block;
+//    margin-bottom: $space-big;
+//    padding: 10px 0;
+//    //transition: all .3s cubic-bezier(.64, .09, .08, 1);
+//    transition: background-position $animate-style, box-shadow $animate-style;
+//    width: 200px;
+//    will-change: background-position;
+//
+//    &::placeholder {
+//      //transition: all .2s $cubic;
+//      transition: color .2s $cubic, font-size .2s $cubic, transform  .2s $cubic;
+//	  }
+//
+//    &:focus,
+//    &:valid {
+//      background-position: 0 0;
+//      box-shadow: none;
+//      outline: none;
+//
+//      &::placeholder {
+//        color: $primary;
+//        font-size: 11px;
+//        transform: translateY(-20px);
+//        visibility: visible !important;
+//	    }
+//	  }
+//	}
+//}
+
+input[type='checkbox']:not(.modal-trigger):not(.toggle):not(#alert-check):not([id*='lightbox-']) {
+	box-sizing: content-box;
+	position: relative;
+	cursor: pointer;
+  left: -3px;
+  top: -3px;
+	&:before {
+		content: '';
+		width: 16px;
+		height: 16px;
+		border: solid 2px $primary;
+		border-radius: $border-radius-small;
+		background: white;
+		position: absolute;
+	}
+	&:after {
+		content: '✓';
+		color: white;
+		background: $primary;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 16px;
+		height: 16px;
+		border: solid 2px $primary;
+		border-radius: $border-radius-small;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		opacity: 0;
+		transition: opacity $animate-style;
+		will-change: opacity;
+	}
+	&:checked {
+		&:after {
+			opacity: 1;
+		}
+	}
+	&:focus {
+		outline: none;
+	}
+}
+
+input[type='checkbox'].toggle:not(.modal-trigger):not(#alert-check):not([id*='lightbox-']) {
+  display: none;
+
+  + label {
+    background-color: lighten($secondary, 25%);
+    border-radius: 3px;
+    height: 6px;
+    margin: 3px 12px;
+    position: relative;
+    transition: background $animate-style;
+    will-change: background;
+    width: 30px;
+
+    &:after {
+      background-color: $secondary;
+      border-radius: 50%;
+      content: '';
+      height: 14px;
+      left: -5px;
+      position: absolute;
+      transition: background $animate-style, left $animate-style;
+      will-change: background, left;
+      top: -4px;
+      width: 14px;
+    }
+  }
+
+  &:checked + label {
+    background: lighten($primary, 25%);
+
+    &:after {
+      background-color: $primary;
+      left: 25px;
+    }
+  }
+}
+
+//.toggle {
+//  cursor: pointer;
+//  display: none;
+//  &:checked {
+//    + label {
+//      background: lighten($emerald, 25%);
+//      &:after {
+//        background: $emerald;
+//      	margin-left: 18px;
+//      }
+//    }
+//  }
+//}
+//
+//.toggle + label {
+//	position: absolute;
+//	width: 30px;
+//	height: 6px;
+//	margin-bottom: 12px;
+//    margin-top: 12px;
+//	background: $grey;
+//	transition: background $animate-style;
+//	will-change: background;
+//	&:after {
+//		position: absolute;
+//		content: '';
+//		width: 14px;
+//		height: 14px;
+//		border-radius: 50%;
+//		background: lighten($grey, 25%);
+//		display: inline-block;
+//		cursor: pointer;
+//		margin-top: -4px;
+//		margin-left: -1px;
+//		transition: all 0.3s ease;
+//		will-change: background, margin-left;
+//		box-shadow: $box-shadow-card;
+//	}
+//}
+
+input[type="radio"] {
+	position: relative;
+	top: 2px;
+	left: 2px;
+	margin: 0 8px;
+	cursor: pointer;
+	&:before {
+		content: '';
+		background-color: white;
+		width: 16px;
+		height: 16px;
+		border-radius: 50%;
+		border: solid 2px $primary;
+		display: inline-block;
+		position: absolute;
+		top: -2px;
+		left: -2px;
+		background-image: radial-gradient(circle, $primary 40%, white 50%);
+		background-size: 0;
+		background-position: 50% 50%;
+		background-repeat: no-repeat;
+		transition: all $animate-style;
+		will-change: background-size;
+		z-index: 2;
+	}
+	&:after {
+		content: '';
+		width: 16px;
+		height: 16px;
+		background: white;
+		border-radius: 50%;
+		position: absolute;
+		transition: all $animate-style;
+	}
+	&:checked {
+		&:before {
+			background-size: 14px 14px;
+		}
+	}
+	&:focus {
+		outline: none;
+	}
+}
+
+select {
+	border: none;
+	border-bottom: solid 1px $grey;
+	color: $black;
+	padding: 6px;
+	cursor: pointer;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+  &:focus {
+  	outline: none;
+  }
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  height: 3px;
+  cursor: pointer;
+  background: $grey;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: $emerald;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -6px;
+  box-shadow: $box-shadow-card;
+}
+
+input[type=range]::-moz-range-track {
+  height: 3px;
+  cursor: pointer;
+  background: $grey;
+}
+
+input[type=range]::-moz-range-thumb {
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  border: none;
+  background: $emerald;
+  cursor: pointer;
+}
+
+input[type=range]::-ms-track {
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+input[type=range]::-ms-fill-lower {
+  background: $emerald;
+}
+
+input[type=range]::-ms-fill-upper {
+  background: $grey;
+}
+
+input[type=range]::-ms-thumb {
+  background: $emerald;
+}
+
+textarea {
+	border: solid 1px $grey;
+	transition: border $animate-style;
+	&:focus {
+		border: solid 1px $primary;
+		outline: none;
+	}
+}
